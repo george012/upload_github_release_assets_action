@@ -25,6 +25,7 @@ oldfileVersionStr=`cat $VersionFile | grep -n "VERSION=" | awk -F ":" '{print $2
 newVersionStr='VERSION=''"'$versionStr'"'
 sed -i "" -e "${fileVersionLineNo}s/${oldfileVersionStr}/${newVersionStr}/g" $VersionFile
 
-APP_OLD_VERSION=${newVersionStr%.*}.$((${newVersionStr##*.}-1))
+ovs=${oldfileVersionStr#VERSION=\"}
+APP_OLD_VERSION=${ovs%\"}
 
 git add . && git commit -m "Update ${versionStr}"  && git tag $versionStr && git push && git push --tags && git tag -f latest $versionStr && git push -f origin latest && git tag -d $APP_OLD_VERSION
