@@ -27,5 +27,6 @@ sed -i "" -e "${fileVersionLineNo}s/${oldfileVersionStr}/${newVersionStr}/g" $Ve
 
 ovs=${oldfileVersionStr#VERSION=\"}
 APP_OLD_VERSION=${ovs%\"}
+PRE_DEL_VERSION=${APP_OLD_VERSION%.*}.$((${APP_OLD_VERSION##*.}-1))
 
-git add . && git commit -m "Update ${versionStr}"  && git tag $versionStr && git push && git push --tags && git tag -f latest $versionStr && git push -f origin latest && git tag -d $APP_OLD_VERSION
+git add . && git commit -m "Update ${versionStr}"  && git tag $versionStr && git push && git push --tags && git tag -f latest $versionStr && git push -f origin latest && git tag -d $PRE_DEL_VERSION
