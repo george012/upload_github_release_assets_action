@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@vercel/ncc": "latest",
-    "eslint": "^8.44.0",
+    "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-import": "latest",
