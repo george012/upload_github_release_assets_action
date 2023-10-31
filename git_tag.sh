@@ -2,7 +2,7 @@
 
 set -e
 
-ProductName=upload_file_to_release
+ProductName=upload_github_release_assets_action
 Product_version_key="ProjectVersion"
 REPO_PFEX=george012/$ProductName
 VersionFile=./package.json
