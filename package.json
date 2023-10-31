@@ -1,6 +1,6 @@
 {
   "name": "upload_file_to_release",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Upload a release asset to an existing GitHub Release",
   "main": "dist/index.js",
   "scripts": {
