@@ -9621,6 +9621,7 @@ function wrappy (fn, cb) {
 const core = __nccwpck_require__(2186);
 const { getOctokit } = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(7147);
+const path = __nccwpck_require__(1017); // <-- Add this for path manipulations
 
 async function run() {
   try {
@@ -9630,7 +9631,12 @@ async function run() {
     // Get the inputs from the workflow file: https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs
     const uploadUrl = core.getInput('upload_url', { required: true });
     const assetPath = core.getInput('asset_path', { required: true });
-    const assetName = core.getInput('asset_name', { required: true });
+    // Check if asset_name is provided. If not, use the filename from assetPath
+    let assetName = core.getInput('asset_name');
+    if (!assetName) {
+      assetName = path.basename(assetPath);
+    }
+
     const assetContentType = core.getInput('asset_content_type', { required: true });
 
     // Determine content-length for header to upload asset
