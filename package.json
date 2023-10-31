@@ -1,6 +1,6 @@
 {
   "name": "upload_file_to_release",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Upload a release asset to an existing GitHub Release",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/george012/upload_file_to_release"
   },
-  "homepage": "https://github.com/george012/cloudflare-r2-upload",
+  "homepage": "https://github.com/george012/upload_file_to_release",
   "keywords": [
     "actions",
     "node"

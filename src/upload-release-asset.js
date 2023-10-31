@@ -1,11 +1,11 @@
 const core = require('@actions/core');
-const { GitHub } = require('@actions/github');
+const { getOctokit } = require('@actions/github');
 const fs = require('fs');
 
 async function run() {
   try {
     // Get authenticated GitHub client (Ocktokit): https://github.com/actions/toolkit/tree/master/packages/github#usage
-    const github = new GitHub(process.env.GITHUB_TOKEN);
+    const github = getOctokit(process.env.GITHUB_TOKEN);
 
     // Get the inputs from the workflow file: https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs
     const uploadUrl = core.getInput('upload_url', { required: true });
@@ -14,8 +14,15 @@ async function run() {
     const assetContentType = core.getInput('asset_content_type', { required: true });
 
     // Determine content-length for header to upload asset
-    const contentLength = filePath => fs.statSync(filePath).size;
-
+    // const contentLength = filePath => fs.statSync(filePath).size;
+    const contentLength = filePath => {
+      try {
+        return fs.statSync(filePath).size;
+      } catch (error) {
+        core.setFailed(`Failed to get size of file ${filePath}: ${error.message}`);
+        return 0;
+      }
+    };
     // Setup headers for API call, see Octokit Documentation: https://octokit.github.io/rest.js/#octokit-routes-repos-upload-release-asset for more information
     const headers = { 'content-type': assetContentType, 'content-length': contentLength(assetPath) };
 
