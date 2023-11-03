@@ -56,7 +56,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Release
-        uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
+        uses: george012/upload_github_release_assets_action@latest
 ```
 
 ### ⬆️ Uploading release assets
@@ -86,10 +86,9 @@ jobs:
       - name: Test
         run: cat Release.txt
       - name: Release build 
-        uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
+        uses: george012/upload_github_release_assets_action@latest
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          filename: release
           path: ./build/release/*.zip
 ```
 
@@ -109,7 +108,6 @@ steps:
 
 - uses: actions/upload-artifact@v3
   with:
-    filename: my-artifact
     path: path/to/artifact/world.txt
 ```
 
@@ -118,7 +116,6 @@ steps:
 ```yaml
 - uses: actions/upload-artifact@v3
   with:
-    filename: my-artifact
     path: path/to/artifact/ # or path/to/artifact
 ```
 
@@ -127,7 +124,6 @@ steps:
 ```yaml
 - uses: actions/upload-artifact@v3
   with:
-    filename: my-artifact
     path: path/**/[abc]rtifac?/*
 ```
 
