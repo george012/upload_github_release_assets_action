@@ -134,6 +134,7 @@ function git_handle_push() {
 
 function alone_func {
     npm install
+    npm update
     npm run build
 }
 
