@@ -1,14 +1,16 @@
 <h1 align="center">
   upload_github_release_assets_action
 </h1>
-
 <p align="center">
    A GitHub Action for creating GitHub Releases on Linux, Windows, and macOS virtual environments
 </p>
 
 Fork By [action gh-release](https://github.com/softprops/action-gh-release.git)
 Fork By [upload-artifact](https://github.com/actions/upload-artifact)
-
+```
+npm install 
+node-version 20.2.0
+```
 ## Usage
 
 ### ⬆️ Uploading release assets
